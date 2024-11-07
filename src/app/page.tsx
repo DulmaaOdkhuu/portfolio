@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 import Loader from "@/components/Loader";
 import { Canvas } from "@react-three/fiber";
 import React, { useState, useEffect, useRef } from "react";
@@ -18,51 +18,60 @@ export default function Home() {
   const [currentStage, setCurrentStage] = useState(1);
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
   const [isClient, setIsClient] = useState(false);
- 
 
   useEffect(() => {
     // Check if we're on the client side
     setIsClient(typeof window !== "undefined");
   }, []);
 
+  // Create audio object on client side
   useEffect(() => {
-    // Only create Audio instance on the client side
     if (isClient) {
       audioRef.current = new Audio(celtic);
       audioRef.current.volume = 0.3;
       audioRef.current.loop = true;
     }
-  }, []);
+  }, [isClient]);
+
+  const handleMusicToggle = () => {
+    if (audioRef.current) {
+      if (isPlayingMusic) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch((error) => {
+          console.error("Audio playback failed:", error);
+        });
+      }
+      setIsPlayingMusic(!isPlayingMusic);
+    }
+  };
 
   useEffect(() => {
-    if (isPlayingMusic) {
-      audioRef.current?.play();
-    } else {
-      audioRef.current?.pause();
-    }
-    // Cleanup on component unmount
+    // Cleanup when component unmounts
     return () => {
-      audioRef.current?.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     };
-  }, [isPlayingMusic]);
-
+  }, []);
 
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
     let screenPosition = [0, -6.5, -43];
     let rotation = [0.1, 4.7, 0];
 
-    if (isClient  && window.innerWidth < 768) {
+    if (isClient && window.innerWidth < 768) {
       screenScale = [0.9, 0.9, 0.9];
     } else {
       screenScale = [1, 1, 1];
     }
     return [screenScale, screenPosition, rotation];
   };
+
   const adjustPlaneForScreenSize = () => {
     let screenScale, screenPosition;
 
-    if (isClient &&  window.innerWidth < 768) {
+    if (isClient && window.innerWidth < 768) {
       screenScale = [1.5, 1.5, 1.5];
       screenPosition = [0, -1.5, 0];
     } else {
@@ -71,9 +80,10 @@ export default function Home() {
     }
     return [screenScale, screenPosition];
   };
-  const [islandScale, islandPosition, islandRotation] =
-    adjustIslandForScreenSize();
+
+  const [islandScale, islandPosition, islandRotation] = adjustIslandForScreenSize();
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
+
   return (
     <section className="w-full h-screen relative">
       <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
@@ -110,9 +120,9 @@ export default function Home() {
       <div className="absolute bottom-2 left-2">
         <Image
           src={!isPlayingMusic ? soundon : soundoff}
-          alt="Project Icon"
+          alt="sound"
           className="w-10 h-10 cursor-pointer object-contain"
-          onClick={()=> setIsPlayingMusic(!isPlayingMusic)}
+          onClick={handleMusicToggle}
         />
       </div>
     </section>
