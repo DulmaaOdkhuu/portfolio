@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section className="max-container">
       <h1 className="head-text">
-        Hello I&apos;m<span className="blue-gradient_text">Dulmaa</span> 😇
+        Hello I&apos;m <span className="blue-gradient_text">Dulmaa</span> 😇
       </h1>
       <div className="mt-5 flex flex-col gap-3 text-slate-500">
         <p>
@@ -56,7 +56,7 @@ export default function About() {
                   </div>
                   <ul className="mt-5 flex flex-col gap-3 text-slate-500 list-disc">
                     {experience.points.map((point, index) => (
-                      <li key={index}>{point}</li>
+                      <li className="text-slate-500" key={index}>{point}</li>
                     ))}
                   </ul>
                 </div>

@@ -13,9 +13,9 @@ export default function Projects() {
       </h1>
       <div className="mt-5 flex flex-col gap-3 text-slate-500">
         <p>
-          As a front-end developer, I&aposve taken on a variety of projects over the
+          As a front-end developer, I&apos;ve taken on a variety of projects over the
           years, but these are the ones that truly resonate with me. Feel free
-          to share your ideas! I&aposm always open to collaboration and excited to
+          to share your ideas! I&apos;m always open to collaboration and excited to
           bring new concepts to life in ways that enhance user experience and
           push the boundaries of design
         </p>
@@ -35,9 +35,9 @@ export default function Projects() {
                 </div>
               </div>
               <div className="mt-5 flex flex-col">
-                <h4 className="text-2xl font-poppins font-semibold">{project.name}</h4>
-                <p>{project.description}</p>
-                <div className="mt-5 flex items-center gap-2 font-poppins">
+                <h4 className="text-2xl font-poppins font-semibold ">{project.name}</h4>
+                <p className="text-slate-500">{project.description}</p>
+                <div className="mt-5 flex items-center gap-2 font-poppins ">
                     <Link href={project.link} target="_blank" rel="nooperner noreferrer" className="font-semibold text-blue-600">
                     Live Link
                     </Link>
