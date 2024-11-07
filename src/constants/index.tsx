@@ -147,7 +147,7 @@ export const experiences = [
             "Design Systems: Create system specifications, including data flow diagrams, system flowcharts, and entity-relationship diagrams, to outline the structure and functionality of the proposed systems.",
             "Collaborate: Work closely with business stakeholders, developers, and other team members to ensure that the proposed solutions align with business needs and technical capabilities.",
             "Write Documentation: Prepare detailed documentation, including system requirements documents, functional specifications, and technical design documents.",
-            "Research and Evaluation: Evaluate potential software or hardware solutions and make recommendations based on the organization's needs and constraints.",
+            "Research and Evaluation: Evaluate potential software or hardware solutions and make recommendations based on the organization&aposs needs and constraints.",
         ],
     },
     {
@@ -164,7 +164,7 @@ export const experiences = [
             "Cross-Browser Compatibility: Ensure that the e-commerce site functions correctly and looks consistent across different web browsers, such as Chrome, Firefox, Safari, and Internet Explorer.",
             "Performance Optimization: Optimize web pages for fast loading times, which is essential for e-commerce sites. This may involve techniques like code minification, image optimization, and lazy loading.",
             "Accessibility: Make the website accessible to users with disabilities by following web accessibility standards (e.g., WCAG) and implementing features like keyboard navigation and screen reader compatibility.",
-            "Search Engine Optimization (SEO): Implement SEO best practices to enhance the website's visibility in search engine results. This includes optimizing meta tags, headings, and content structure.",
+            "Search Engine Optimization (SEO): Implement SEO best practices to enhance the website&aposs visibility in search engine results. This includes optimizing meta tags, headings, and content structure.",
             "Integration with Backend: Collaborate with back-end developers to connect the front-end to the back-end systems and databases, ensuring data is fetched and displayed accurately.",
             "Version Control: Use version control systems like Git to manage code changes and collaborate effectively with other team members.",
             "Google Tag Manager: Implement Google Tag Manager, create events and tags within the Tag Manager to ensure accurate performance, implement scripts and events in the code, and ensure their correct operation.",

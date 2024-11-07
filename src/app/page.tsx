@@ -13,28 +13,46 @@ import { soundoff, soundon } from "@/assets/icons";
 import Image from "next/image";
 
 export default function Home() {
-  const audioRef = useRef(new Audio(celtic));
-  audioRef.current.volume = 0.3;
-  audioRef.current.loop = true;
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isRotating, setIsRotating] = useState(false);
   const [currentStage, setCurrentStage] = useState(1);
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+ 
+
+  useEffect(() => {
+    // Check if we're on the client side
+    setIsClient(typeof window !== "undefined");
+  }, []);
+
+  useEffect(() => {
+    // Only create Audio instance on the client side
+    if (isClient) {
+      audioRef.current = new Audio(celtic);
+      audioRef.current.volume = 0.3;
+      audioRef.current.loop = true;
+    }
+  }, []);
 
   useEffect(() => {
     if (isPlayingMusic) {
-      audioRef.current.play();
+      audioRef.current?.play();
+    } else {
+      audioRef.current?.pause();
     }
+    // Cleanup on component unmount
     return () => {
-      audioRef.current.pause();
+      audioRef.current?.pause();
     };
   }, [isPlayingMusic]);
+
 
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
     let screenPosition = [0, -6.5, -43];
     let rotation = [0.1, 4.7, 0];
 
-    if (window.innerWidth < 768) {
+    if (isClient  && window.innerWidth < 768) {
       screenScale = [0.9, 0.9, 0.9];
     } else {
       screenScale = [1, 1, 1];
@@ -44,7 +62,7 @@ export default function Home() {
   const adjustPlaneForScreenSize = () => {
     let screenScale, screenPosition;
 
-    if (window.innerWidth < 768) {
+    if (isClient &&  window.innerWidth < 768) {
       screenScale = [1.5, 1.5, 1.5];
       screenPosition = [0, -1.5, 0];
     } else {

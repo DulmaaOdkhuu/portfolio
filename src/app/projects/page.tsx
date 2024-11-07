@@ -13,9 +13,9 @@ export default function Projects() {
       </h1>
       <div className="mt-5 flex flex-col gap-3 text-slate-500">
         <p>
-          As a front-end developer, I've taken on a variety of projects over the
+          As a front-end developer, I&aposve taken on a variety of projects over the
           years, but these are the ones that truly resonate with me. Feel free
-          to share your ideas! I'm always open to collaboration and excited to
+          to share your ideas! I&aposm always open to collaboration and excited to
           bring new concepts to life in ways that enhance user experience and
           push the boundaries of design
         </p>
